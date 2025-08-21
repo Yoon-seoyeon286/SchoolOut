@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 61d272d767ab4934abd69098ff05272b
+timeCreated: 1513852041
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Models/Materials/WasteBin.mat
+  uploadId: 269762

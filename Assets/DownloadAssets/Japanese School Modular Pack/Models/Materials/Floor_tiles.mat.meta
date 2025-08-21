@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c82ddd1b74b83c84f9325f281db08463
+timeCreated: 1512457993
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Models/Materials/Floor_tiles.mat
+  uploadId: 269762

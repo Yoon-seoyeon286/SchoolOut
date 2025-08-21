@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6d07cfc812b8ed24f9b63921b3dc85b0
+timeCreated: 1512457993
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Models/Materials/Floor_wood.mat
+  uploadId: 269762

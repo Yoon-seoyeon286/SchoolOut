@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1564404ca536491428564465d070639e
+timeCreated: 1513151982
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Prefabs/Wall_02.prefab
+  uploadId: 269762

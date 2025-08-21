@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5bf7e518dce0f6f4b951a2315909ca81
+timeCreated: 1513332015
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Prefabs/Desk_chair.prefab
+  uploadId: 269762

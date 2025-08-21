@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4fb1c0a312459da429fed12a5f0db5b1
+timeCreated: 1513319531
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Prefabs/Ceiling_half.prefab
+  uploadId: 269762

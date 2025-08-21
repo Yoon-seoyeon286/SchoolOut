@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 16c07c3f8de38414e88ef6a5d39667ee
+timeCreated: 1514365778
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Models/Materials/BulletinBoard.mat
+  uploadId: 269762

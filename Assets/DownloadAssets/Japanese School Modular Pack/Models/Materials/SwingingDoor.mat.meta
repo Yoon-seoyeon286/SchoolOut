@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cedb14e2809c6e7438b28424eb87987d
+timeCreated: 1514359967
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Models/Materials/SwingingDoor.mat
+  uploadId: 269762

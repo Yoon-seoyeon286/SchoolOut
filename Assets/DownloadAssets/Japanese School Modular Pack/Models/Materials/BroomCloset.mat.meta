@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 171973e43387dad43a0ef8a76b1a357e
+timeCreated: 1514267538
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Models/Materials/BroomCloset.mat
+  uploadId: 269762

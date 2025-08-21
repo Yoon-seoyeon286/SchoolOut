@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 311370ad77a38854d8ce68d0086e6561
+timeCreated: 1512976141
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108065
+  packageName: 'Modular Japanese School Pack: Classroom and Hallway'
+  packageVersion: 1.2
+  assetPath: Assets/Japanese School Modular Pack/Prefabs/Stairs_baluster.prefab
+  uploadId: 269762
