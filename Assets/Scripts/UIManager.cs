@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,7 +17,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    UIManager m_instance;
+    static UIManager m_instance;
+
+    //배터리 관리
+    public Text batteryCountUI;
+
 
 
     private void Awake()
@@ -26,14 +32,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void Start()
+
+    public void BatteryRemain(float remainTime)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BatteryCount(int battery)
     {
-        
+
+        batteryCountUI.text = "개수 : " + battery;
     }
+
 }
