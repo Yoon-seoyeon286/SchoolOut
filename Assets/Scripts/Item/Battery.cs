@@ -20,11 +20,16 @@ public class Battery : MonoBehaviour, IItem
         grab = GetComponent<XRGrabInteractable>();
     }
 
-    public void UseItem(GameObject target)
+    void Update()
     {
         grab.selectEntered.AddListener(OnBatteryGet); //함수 호출
+    }
+
+    public void UseItem(GameObject target) 
+    {
         Flash flash = target.GetComponent<Flash>(); //타겟 손전등
         flash.BatteryTime(30f); //손전등에 30초 전달
+        inventory.UseBattery(gameObject);
     }
 
     void OnBatteryGet(SelectEnterEventArgs args) //아이템을 쥐었을 때 일어나는 일

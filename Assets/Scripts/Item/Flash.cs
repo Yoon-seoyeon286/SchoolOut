@@ -1,11 +1,16 @@
 using UnityEngine;
 
-public class Flash : MonoBehaviour, IItem
+public class Flash : MonoBehaviour
 {
     public Light spotLight;
+    public playerInventory inventory;
 
     float remainTime = 50f;
 
+    private void Awake()
+    {
+        inventory = FindAnyObjectByType<playerInventory>();
+    }
     void Start()
     {
         remainTime = 50f;
@@ -14,29 +19,22 @@ public class Flash : MonoBehaviour, IItem
 
     void Update()
     {
-        if (remainTime > 0)
+        if (remainTime > 0) //남아있는 시간이 있으면
         {
-            remainTime -= Time.deltaTime;
+            spotLight.gameObject.SetActive(true);
+            remainTime -= Time.deltaTime; //시간이 계속 줄어듦
             UIManager.instance.BatteryRemain(remainTime);
         }
 
-    }
-
-    public void UseItem(GameObject target)
-    {
-        playerInventory playerInventory = target.GetComponent<playerInventory>();
-
-        if (playerInventory.HasBattery ==true && remainTime <= 50f )
-        {
-            spotLight.gameObject.SetActive(true);
-        }
-
-        else if(battery == null || remainTime <= 0)
+        else if ( remainTime <= 0)
         {
             remainTime = 0f;
             spotLight.gameObject.SetActive(false);
         }
+
     }
+
+
 
     public void BatteryTime(float batteryTime)
     {

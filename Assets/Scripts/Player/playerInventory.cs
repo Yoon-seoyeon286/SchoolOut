@@ -7,19 +7,19 @@ public class playerInventory : MonoBehaviour
     List<GameObject> items = new List<GameObject>();
     int batteryCount = 0;
 
-    public void AddBattery(GameObject battery)
+    public void AddBattery(GameObject battery) //배터리 추가
     {
-        if(!items.Contains(battery))
-        {
-            items.Add(battery);
-            batteryCount++;
+        items.Add(battery);
+        batteryCount++;
 
-            UIManager.instance.BatteryCount(batteryCount);
-        }
+        UIManager.instance.BatteryCount(batteryCount);
+    }
+
+    public void UseBattery(GameObject battery) //배터리 사용
+    {
+        items.Remove(battery);
+        batteryCount--;
+        UIManager.instance.BatteryCount(batteryCount);
     }
     
-    public bool HasBattery(GameObject battery)
-    {
-        return items.Contains(battery);
-    }
 }
