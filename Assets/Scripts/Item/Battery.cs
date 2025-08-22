@@ -20,10 +20,7 @@ public class Battery : MonoBehaviour, IItem
         grab = GetComponent<XRGrabInteractable>();
     }
 
-    void Update()
-    {
-        grab.selectEntered.AddListener(OnBatteryGet); //함수 호출
-    }
+    
 
     public void UseItem(GameObject target) 
     {
@@ -32,11 +29,12 @@ public class Battery : MonoBehaviour, IItem
         inventory.UseBattery(gameObject);
     }
 
-    void OnBatteryGet(SelectEnterEventArgs args) //아이템을 쥐었을 때 일어나는 일
+    public void OnBatteryGet(SelectEnterEventArgs args) //아이템을 쥐었을 때 일어나는 일
     {
+        Debug.Log("OnBatteryGet 함수 호출됨!");
         inventory.AddBattery(gameObject); //인벤토리에 오브젝트를 추가
-        
         batterySound.PlayOneShot(getBattery); //소리 재생
-        Destroy(gameObject); // 파괴
+
+        gameObject.SetActive(false);
     }
 }

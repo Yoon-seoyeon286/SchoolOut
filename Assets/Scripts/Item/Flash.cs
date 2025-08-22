@@ -4,6 +4,7 @@ public class Flash : MonoBehaviour
 {
     public Light spotLight;
     public playerInventory inventory;
+    public float maxRemainTime = 50.0f;
 
     float remainTime = 50f;
 
@@ -23,7 +24,7 @@ public class Flash : MonoBehaviour
         {
             spotLight.gameObject.SetActive(true);
             remainTime -= Time.deltaTime; //시간이 계속 줄어듦
-            UIManager.instance.BatteryRemain(remainTime);
+            UIManager.instance.BatteryRemain(remainTime/maxRemainTime);
         }
 
         else if ( remainTime <= 0)

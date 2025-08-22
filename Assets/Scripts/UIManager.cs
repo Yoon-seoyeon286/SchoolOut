@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,10 +20,18 @@ public class UIManager : MonoBehaviour
 
     static UIManager m_instance;
 
+    public Image inventory;
+
     //배터리 관리
-    public Text batteryCountUI;
+    public TMP_Text batteryCountUI;
     public Slider flashSlider;
     
+    //인벤토리 열고 닫기
+    public void OnInventory()
+    {
+        inventory.gameObject.SetActive(true);
+
+    }
 
 
 
@@ -37,12 +46,12 @@ public class UIManager : MonoBehaviour
 
     public void BatteryRemain(float remainTime) //남아있는 배터리 게이지 UI
     {
-        flashSlider.value = remainTime / 50.0f;
+        flashSlider.value = remainTime;
     }
 
     public void BatteryCount(int battery) //인벤토리 배터리 갯수 업뎃 예정
     {
-        batteryCountUI.text = "개수 : " + battery;
+        batteryCountUI.text = "" + battery;
     }
 
 }
