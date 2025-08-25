@@ -8,7 +8,7 @@ public class Battery : MonoBehaviour, IItem
 
     public playerInventory inventory;
 
-    //���� ����
+    //배터리 관리
     AudioSource batterySound;
     public AudioClip getBattery;
 
@@ -24,15 +24,15 @@ public class Battery : MonoBehaviour, IItem
 
     public void UseItem(GameObject target)
     {
-        Flash flash = target.GetComponent<Flash>(); //Ÿ�� ������
-        flash.BatteryTime(30f); //����� 30�� ����
+        Flash flash = target.GetComponent<Flash>();
+        flash.BatteryTime(30f); //손전등에 30초 전달
         inventory.UseBattery(gameObject);
     }
 
-    public void OnBatteryGet(SelectEnterEventArgs args) //�������� ����� �� �Ͼ�� ��
+    public void OnBatteryGet(SelectEnterEventArgs args) 
     { 
-        inventory.AddBattery(gameObject); //�κ��丮�� ������Ʈ�� �߰�
-        batterySound.PlayOneShot(getBattery); //�Ҹ� ���
+        inventory.AddBattery(gameObject); //인벤토리에 해당 아이템을 넣음
+        batterySound.PlayOneShot(getBattery); //소리
 
         gameObject.SetActive(false);
     }

@@ -21,26 +21,44 @@ public class UIManager : MonoBehaviour
     static UIManager m_instance;
 
     public Image inventory;
+   
 
     //배터리 관리
     public TMP_Text batteryCountUI;
     public Slider flashSlider;
     
-    //인벤토리 열고 닫기
-    public void OnInventory()
-    {
-        inventory.gameObject.SetActive(true);
-
-    }
-
 
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance != this)
         {
             Destroy(gameObject);
         }
+      
+    }
+
+
+    //인벤토리 열고 닫기
+    public void OnInventory()
+    {
+       
+        inventory.gameObject.SetActive(true);
+     
+
+    }
+
+    public void OffInvnetory()
+    {
+   
+        inventory.gameObject.SetActive(false);
+   
+    }
+
+    private void Update()
+    {
+        flashSlider.minValue = 0f;
+        flashSlider.maxValue = 50f;
     }
 
 
