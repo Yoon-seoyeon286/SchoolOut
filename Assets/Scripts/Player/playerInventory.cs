@@ -7,7 +7,7 @@ public class playerInventory : MonoBehaviour
     List<GameObject> items = new List<GameObject>();
     int batteryCount = 0;
 
-    public void AddBattery(GameObject battery) //¹èÅÍ¸® Ãß°¡
+    public void AddBattery(GameObject battery) //ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ß°ï¿½
     {
         items.Add(battery);
         batteryCount++;
@@ -15,7 +15,7 @@ public class playerInventory : MonoBehaviour
         UIManager.instance.BatteryCount(batteryCount);
     }
 
-    public void UseBattery(GameObject battery) //¹èÅÍ¸® »ç¿ë
+    public void UseBattery(GameObject battery) //ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½
     {
         items.Remove(battery);
         batteryCount--;

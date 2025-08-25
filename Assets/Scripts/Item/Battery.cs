@@ -8,7 +8,7 @@ public class Battery : MonoBehaviour, IItem
 
     public playerInventory inventory;
 
-    //»ç¿îµå °ü¸®
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     AudioSource batterySound;
     public AudioClip getBattery;
 
@@ -18,22 +18,21 @@ public class Battery : MonoBehaviour, IItem
     {
         batterySound = GetComponent<AudioSource>();
         grab = GetComponent<XRGrabInteractable>();
+
+        grab.selectEntered.AddListener(OnBatteryGet);
     }
 
-    
-
-    public void UseItem(GameObject target) 
+    public void UseItem(GameObject target)
     {
-        Flash flash = target.GetComponent<Flash>(); //Å¸°Ù ¼ÕÀüµî
-        flash.BatteryTime(30f); //¼ÕÀüµî¿¡ 30ÃÊ Àü´Þ
+        Flash flash = target.GetComponent<Flash>(); //Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        flash.BatteryTime(30f); //ï¿½ï¿½ï¿½ï¿½ï¿½î¿¡ 30ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         inventory.UseBattery(gameObject);
     }
 
-    public void OnBatteryGet(SelectEnterEventArgs args) //¾ÆÀÌÅÛÀ» Áã¾úÀ» ¶§ ÀÏ¾î³ª´Â ÀÏ
-    {
-        Debug.Log("OnBatteryGet ÇÔ¼ö È£ÃâµÊ!");
-        inventory.AddBattery(gameObject); //ÀÎº¥Åä¸®¿¡ ¿ÀºêÁ§Æ®¸¦ Ãß°¡
-        batterySound.PlayOneShot(getBattery); //¼Ò¸® Àç»ý
+    public void OnBatteryGet(SelectEnterEventArgs args) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï¾î³ªï¿½ï¿½ ï¿½ï¿½
+    { 
+        inventory.AddBattery(gameObject); //ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½
+        batterySound.PlayOneShot(getBattery); //ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½
 
         gameObject.SetActive(false);
     }

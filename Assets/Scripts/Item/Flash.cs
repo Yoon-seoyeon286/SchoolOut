@@ -4,7 +4,6 @@ public class Flash : MonoBehaviour
 {
     public Light spotLight;
     public playerInventory inventory;
-    public float maxRemainTime = 50.0f;
 
     float remainTime = 50f;
 
@@ -20,11 +19,11 @@ public class Flash : MonoBehaviour
 
     void Update()
     {
-        if (remainTime > 0) //³²¾ÆÀÖ´Â ½Ã°£ÀÌ ÀÖÀ¸¸é
+        if (remainTime > 0) //ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             spotLight.gameObject.SetActive(true);
-            remainTime -= Time.deltaTime; //½Ã°£ÀÌ °è¼Ó ÁÙ¾îµê
-            UIManager.instance.BatteryRemain(remainTime/maxRemainTime);
+            remainTime -= Time.deltaTime; //ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½
+            UIManager.instance.BatteryRemain(remainTime);
         }
 
         else if ( remainTime <= 0)
