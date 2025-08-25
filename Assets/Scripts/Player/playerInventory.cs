@@ -5,7 +5,15 @@ using UnityEngine;
 public class playerInventory : MonoBehaviour
 {
     List<GameObject> items = new List<GameObject>();
-    int batteryCount = 0;
+    int batteryCount;
+
+    Flash flash;
+
+    private void Awake()
+    {
+        batteryCount = 0;
+        flash = FindAnyObjectByType<Flash>();
+    }
 
     private void Update()
     {
@@ -20,18 +28,26 @@ public class playerInventory : MonoBehaviour
         UIManager.instance.BatteryCount(batteryCount);
     }
 
-    public void UseBattery(GameObject battery) //배터리 사용
-    {
-        items.Remove(battery);
-        batteryCount--;
-
-        Battery battery1 = battery.GetComponent<Battery>();
-
-        Flash flash = FindAnyObjectByType<Flash>();
-        
-        battery1.UseItem(flash.gameObject);
-
-        UIManager.instance.BatteryCount(batteryCount);
-    }
     
+    public void UseBattery()
+    {
+        if (batteryCount > 0)
+        {
+            GameObject batteryToUse = items[items.Count - 1];
+            items.Remove(batteryToUse);
+            batteryCount--;
+
+            if(flash!= null)
+            {
+                flash.BatteryTime(30f);
+            }
+
+            Destroy(batteryToUse);
+
+            if(UIManager.instance!= null)
+            {
+                UIManager.instance.BatteryCount(batteryCount);
+            }
+        }
+    }
 }

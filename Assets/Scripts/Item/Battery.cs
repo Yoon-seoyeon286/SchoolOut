@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class Battery : MonoBehaviour, IItem
+public class Battery : MonoBehaviour
 {
     XRGrabInteractable grab;
 
-    public playerInventory inventory;
+   playerInventory inventory;
 
     //배터리 관리
     AudioSource batterySound;
@@ -18,16 +18,17 @@ public class Battery : MonoBehaviour, IItem
     {
         batterySound = GetComponent<AudioSource>();
         grab = GetComponent<XRGrabInteractable>();
+        inventory = FindAnyObjectByType<playerInventory>();
 
         grab.selectEntered.AddListener(OnBatteryGet);
     }
 
-    public void UseItem(GameObject target)
+  /*  public void UseItem(GameObject target)
     {
         Flash flash = target.GetComponent<Flash>();
         flash.BatteryTime(30f); //손전등에 30초 전달
         inventory.UseBattery(gameObject);
-    }
+    }*/
 
     public void OnBatteryGet(SelectEnterEventArgs args) 
     { 
