@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class playerInventory : MonoBehaviour
@@ -9,10 +10,13 @@ public class playerInventory : MonoBehaviour
 
     Flash flash;
 
+    bool isKey;
+
     private void Awake()
     {
         batteryCount = 0;
         flash = FindAnyObjectByType<Flash>();
+        isKey = false;
     }
 
     private void Update()
@@ -48,6 +52,30 @@ public class playerInventory : MonoBehaviour
             {
                 UIManager.instance.BatteryCount(batteryCount);
             }
+        }
+    }
+
+    public void AddKey(GameObject key)
+    {
+        if (isKey == false)
+        {
+            items.Add(key);
+            UIManager.instance.OnKey();
+            isKey = true;
+        }
+
+        else return;
+    }
+
+    public void UseKey()
+    {
+        if (isKey == true)
+        {
+            GameObject keyUseThat = items[items.Count - 1];
+            items.Remove(keyUseThat);
+            UIManager.instance.OffKey();
+
+            Instantiate(keyUseThat, transform.position, Quaternion.identity);
         }
     }
 }

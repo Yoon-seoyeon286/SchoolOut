@@ -26,7 +26,9 @@ public class UIManager : MonoBehaviour
     //硅磐府 包府
     public TMP_Text batteryCountUI;
     public Slider flashSlider;
-    
+
+    //凯艰 包府
+    public RawImage keyImage;
 
 
     private void Awake()
@@ -72,4 +74,13 @@ public class UIManager : MonoBehaviour
         batteryCountUI.text = "" + battery;
     }
 
+    public void OnKey()
+    {
+        keyImage.gameObject.SetActive(true);
+    }
+
+    public void OffKey()
+    {
+        keyImage.gameObject.SetActive(false);
+    }
 }
