@@ -1,3 +1,4 @@
+using System.Xml;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,11 @@ public class Enemy : MonoBehaviour
     AudioSource audioSource;
     public AudioClip defaultClip;
     public AudioClip attackClip;
+
+    public float timeToDisappera = 2.0f;
+    float exposureTime = 0f;
+    bool isExposedToSpotlight = false;
+
 
 
     private void Awake()
@@ -34,8 +40,16 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (CompareTag("Player") == true)
+        if (other.CompareTag("Player"))
         {
+            Player player = other.GetComponent<Player>();
+            player.Damage(30f);
+        }
+
+        if (other.CompareTag("Light"))
+        {
+            isExposedToSpotlight = true;
+            exposureTime = 0f;
 
         }
     }

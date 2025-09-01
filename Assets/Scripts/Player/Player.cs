@@ -39,4 +39,13 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    public void Damage(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0) 
+        {
+            hp = 0;
+        }
+    }
 }

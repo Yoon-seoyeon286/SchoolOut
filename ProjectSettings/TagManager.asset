@@ -9,6 +9,7 @@ TagManager:
   - paint
   - ball
   - book
+  - Light
   layers:
   - Default
   - TransparentFX
