@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Flash : MonoBehaviour
 {
@@ -7,10 +8,10 @@ public class Flash : MonoBehaviour
 
     float remainTime = 50f;
 
-    private void Awake()
-    {
-        inventory = FindAnyObjectByType<playerInventory>();
-    }
+    //UI
+    public Button[] buttons;
+
+   
     void Start()
     {
         remainTime = 50f;
@@ -45,5 +46,30 @@ public class Flash : MonoBehaviour
             remainTime = 50f;
         }
 
+    }
+
+
+    public void ActiveUI()
+    {
+        foreach(Button button in buttons)
+        {
+            button.gameObject.SetActive(true);
+        }
+    }
+
+
+    public void FalseUI()
+    {
+        foreach (Button button in buttons)
+        {
+            button.gameObject.SetActive(false);
+        }
+    }
+
+
+    public void GetFlash()
+    {
+        inventory.AddFlash(gameObject);
+        //gameObject.SetActive(false);
     }
 }

@@ -31,6 +31,9 @@ public class UIManager : MonoBehaviour
     //열쇠 관리
     public RawImage keyImage;
 
+    //손전등 관리
+    public RawImage flashImage;
+
 
     private void Awake()
     {
@@ -84,5 +87,16 @@ public class UIManager : MonoBehaviour
     {
         playerinventory.UseKey();
         keyImage.gameObject.SetActive(false);
+    }
+
+    public void OnFlash()
+    {
+        flashImage.gameObject.SetActive(true);
+    }
+
+    public void OffFlash()
+    {
+        playerinventory.UseFlash();
+        flashImage.gameObject.SetActive(false);
     }
 }

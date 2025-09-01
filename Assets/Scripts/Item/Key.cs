@@ -26,6 +26,6 @@ public class Key : MonoBehaviour
     {
         inventory.AddKey(gameObject);
         audioSource.PlayOneShot(keyClip);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }

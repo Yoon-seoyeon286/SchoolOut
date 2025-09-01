@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Security;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -10,13 +11,17 @@ public class playerInventory : MonoBehaviour
 
     Flash flash;
 
-    bool isKey;
+    GameObject flashOriginal;
+    GameObject keyOriginal;
 
+    bool isKey;
+    bool isFlash;
     private void Awake()
     {
         batteryCount = 0;
         flash = FindAnyObjectByType<Flash>();
         isKey = false;
+        isFlash = false;
     }
 
     private void Update()
@@ -59,7 +64,9 @@ public class playerInventory : MonoBehaviour
     {
         if (!isKey)
         {
-            items.Add(key);
+            keyOriginal = key;
+            keyOriginal.SetActive(false);
+            items.Add(keyOriginal);
             UIManager.instance.OnKey();
             isKey = true;
         }
@@ -75,12 +82,50 @@ public class playerInventory : MonoBehaviour
             {
                 items.Remove(keyToUse);
                 UIManager.instance.OffKey();
-                keyToUse.gameObject.SetActive(true);
-
-                Instantiate(keyToUse, transform.position, Quaternion.identity);
+                keyOriginal.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+                keyOriginal.SetActive(true);
 
                 isKey = false;
             }
         }
+    }
+
+    public void AddFlash(GameObject flash)
+    {
+        if (!isFlash)
+        {
+        flashOriginal = flash;
+            flashOriginal.SetActive(false);
+
+        items.Add(flashOriginal);
+        UIManager.instance.OnFlash();
+        isFlash = true;
+        }
+    }
+
+    public void UseFlash()
+    {
+        if (isFlash)
+        {
+            GameObject flashToUse = items.Find(item => item.GetComponent<Flash>() != null);
+            {
+                if (flashToUse != null) { 
+                    items.Remove(flashToUse);
+                UIManager.instance.OffFlash();
+
+                flashOriginal.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+                flashOriginal.SetActive(true);
+                  
+
+                isFlash = false;
+                }
+            }
+        }
+
+        else
+        {
+            Debug.Log("소환불가");
+        }
+
     }
 }
