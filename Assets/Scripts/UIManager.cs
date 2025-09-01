@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     static UIManager m_instance;
 
     public Image inventory;
+    public playerInventory playerinventory;
    
 
     //배터리 관리
@@ -81,6 +82,7 @@ public class UIManager : MonoBehaviour
 
     public void OffKey()
     {
+        playerinventory.UseKey();
         keyImage.gameObject.SetActive(false);
     }
 }

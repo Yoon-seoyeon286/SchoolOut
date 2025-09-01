@@ -57,25 +57,31 @@ public class playerInventory : MonoBehaviour
 
     public void AddKey(GameObject key)
     {
-        if (isKey == false)
+        if (!isKey)
         {
             items.Add(key);
             UIManager.instance.OnKey();
             isKey = true;
         }
-
-        else return;
     }
 
     public void UseKey()
     {
-        if (isKey == true)
+        if (isKey)
         {
-            GameObject keyUseThat = items[items.Count - 1];
-            items.Remove(keyUseThat);
-            UIManager.instance.OffKey();
+            GameObject keyToUse = items.Find(item => item.GetComponent<Key>() != null);
 
-            Instantiate(keyUseThat, transform.position, Quaternion.identity);
+            if (keyToUse != null)
+            {
+                items.Remove(keyToUse);
+                UIManager.instance.OffKey();
+                keyToUse.gameObject.SetActive(true);
+                keyToUse.Se
+
+                Instantiate(keyToUse, transform.position, Quaternion.identity);
+
+                isKey = false;
+            }
         }
     }
 }

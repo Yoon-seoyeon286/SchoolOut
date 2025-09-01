@@ -3,13 +3,18 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     public playerInventory inventory;
-
+    public Canvas keyCanvas;
     public AudioClip keyClip;
     AudioSource audioSource;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+   public void ActiveUI()
+    {
+        keyCanvas.gameObject.SetActive(true);
     }
 
     public void GetKey()
