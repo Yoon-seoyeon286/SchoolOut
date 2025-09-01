@@ -17,6 +17,11 @@ public class Key : MonoBehaviour
         keyCanvas.gameObject.SetActive(true);
     }
 
+    public void FalseUI()
+    {
+        keyCanvas.gameObject.SetActive(false);
+    }
+
     public void GetKey()
     {
         inventory.AddKey(gameObject);

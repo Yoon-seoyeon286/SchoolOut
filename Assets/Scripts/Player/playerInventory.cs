@@ -76,7 +76,6 @@ public class playerInventory : MonoBehaviour
                 items.Remove(keyToUse);
                 UIManager.instance.OffKey();
                 keyToUse.gameObject.SetActive(true);
-                keyToUse.Se
 
                 Instantiate(keyToUse, transform.position, Quaternion.identity);
 
