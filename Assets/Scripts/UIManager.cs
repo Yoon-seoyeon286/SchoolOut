@@ -34,6 +34,9 @@ public class UIManager : MonoBehaviour
     //颊傈殿 包府
     public RawImage flashImage;
 
+    //HP 包府
+    public Slider hpSlider;
+
 
     private void Awake()
     {
@@ -41,7 +44,8 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-      
+
+
     }
 
 
@@ -65,6 +69,10 @@ public class UIManager : MonoBehaviour
     {
         flashSlider.minValue = 0f;
         flashSlider.maxValue = 50f;
+
+
+        hpSlider.minValue = 0f;
+        hpSlider.maxValue = 100f;
     }
 
 
@@ -98,5 +106,10 @@ public class UIManager : MonoBehaviour
     {
         playerinventory.UseFlash();
         flashImage.gameObject.SetActive(false);
+    }
+
+    public void HpSlider(float hpGaze)
+    {
+        hpSlider.value = hpGaze;
     }
 }
