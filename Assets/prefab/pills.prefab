@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5336511975048547058}
   - component: {fileID: 4569064287987182705}
   - component: {fileID: 2562832868065257712}
+  - component: {fileID: 6639937768552067041}
   m_Layer: 0
   m_Name: pills
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4215936808042750337}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.66371346, z: -0, w: -0.747987}
+  m_LocalRotation: {x: -0, y: -0.66371095, z: 0, w: -0.74798924}
   m_LocalPosition: {x: 34.529, y: 2.006, z: 10.02}
   m_LocalScale: {x: 0.44, y: 0.44, z: 0.44}
   m_ConstrainProportionsScale: 1
@@ -209,7 +210,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6639937768552067041}
+        m_TargetAssemblyTypeName: Pill, Assembly-CSharp
+        m_MethodName: GetPill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -284,3 +297,17 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
+--- !u!114 &6639937768552067041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4215936808042750337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6c8482d04b84769b19a2e8a3209cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  getPillClip: {fileID: 0}

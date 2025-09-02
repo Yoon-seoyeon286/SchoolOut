@@ -88,7 +88,10 @@ public class playerInventory : MonoBehaviour
 
             Destroy(pillToUse);
 
-            if(UIManager.instance.)
+            if (UIManager.instance != null)
+            {
+                UIManager.instance.PillCount(pillCount);
+            }
 
         }
     }
