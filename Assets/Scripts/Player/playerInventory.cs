@@ -8,7 +8,9 @@ public class playerInventory : MonoBehaviour
 {
     List<GameObject> items = new List<GameObject>();
     int batteryCount;
+    int pillCount;
 
+    Player player;
     Flash flash;
 
     GameObject flashOriginal;
@@ -16,10 +18,14 @@ public class playerInventory : MonoBehaviour
 
     bool isKey;
     bool isFlash;
+
+
     private void Awake()
     {
         batteryCount = 0;
+        pillCount = 0;
         flash = FindAnyObjectByType<Flash>();
+        player = FindAnyObjectByType<Player>();
         isKey = false;
         isFlash = false;
     }
@@ -57,6 +63,33 @@ public class playerInventory : MonoBehaviour
             {
                 UIManager.instance.BatteryCount(batteryCount);
             }
+        }
+    }
+
+    public void AddPill(GameObject pill)
+    {
+        items.Add(pill);
+        pillCount++;
+        UIManager.instance.PillCount(pillCount);
+    }
+
+    public void UsePill()
+    {
+        if (pillCount > 0)
+        {
+            GameObject pillToUse = items[items.Count - 1];
+            items.Remove(pillToUse);
+            pillCount--;
+
+            if (pillToUse != null)
+            {
+                player.AddHp(30f);
+            }
+
+            Destroy(pillToUse);
+
+            if(UIManager.instance.)
+
         }
     }
 

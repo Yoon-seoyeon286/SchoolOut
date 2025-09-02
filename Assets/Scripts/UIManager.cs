@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class UIManager : MonoBehaviour
     public TMP_Text batteryCountUI;
     public Slider flashSlider;
 
+    //pill
+    public TMP_Text pillCountUI;
+
+
     //���� ����
     public RawImage keyImage;
 
@@ -41,6 +46,9 @@ public class UIManager : MonoBehaviour
     //damdage
     public RawImage damageImage;
     float fadeDuration = 2f;
+
+    //dead
+    public RawImage deadImage;
 
 
     private void Awake()
@@ -89,6 +97,11 @@ public class UIManager : MonoBehaviour
     public void BatteryCount(int battery) //�κ��丮 ���͸� ���� ���� ����
     {
         batteryCountUI.text = "" + battery;
+    }
+
+    public void PillCount(int pill)
+    {
+        pillCountUI.text = "" + pill;
     }
 
     public void OnKey()
@@ -143,7 +156,20 @@ public class UIManager : MonoBehaviour
 
         damageImage.color = new Color(startColor.r, startColor.g, startColor.b);
         damageImage.gameObject.SetActive(false);
+    }
 
-        
+    public void DeadImage()
+    {
+        deadImage.gameObject.SetActive(true);
+    }
+
+    public void ReGame()
+    {
+        SceneManager.LoadScene("schoolMain");
+    }
+
+    public void GiveUP()
+    {
+        Application.Quit();
     }
 }

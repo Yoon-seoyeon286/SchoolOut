@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         {
             isDead = true;
             audioSource.PlayOneShot(deadClip);
+            UIManager.instance.DeadImage();
             hp = 0f;
         }
         
