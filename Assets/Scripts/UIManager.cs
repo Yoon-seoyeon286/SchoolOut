@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class UIManager : MonoBehaviour
     {
         get
         {
-            if(m_instance == null)
+            if (m_instance == null)
             {
                 m_instance = FindFirstObjectByType<UIManager>();
             }
@@ -22,20 +23,24 @@ public class UIManager : MonoBehaviour
 
     public Image inventory;
     public playerInventory playerinventory;
-   
 
-    //¹èÅÍ¸® °ü¸®
+
+    //ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½
     public TMP_Text batteryCountUI;
     public Slider flashSlider;
 
-    //¿­¼è °ü¸®
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public RawImage keyImage;
 
-    //¼ÕÀüµî °ü¸®
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public RawImage flashImage;
 
-    //HP °ü¸®
+    //HP ï¿½ï¿½ï¿½ï¿½
     public Slider hpSlider;
+
+    //damdage
+    public RawImage damageImage;
+    float fadeDuration = 2f;
 
 
     private void Awake()
@@ -49,20 +54,20 @@ public class UIManager : MonoBehaviour
     }
 
 
-    //ÀÎº¥Åä¸® ¿­°í ´Ý±â
+    //ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ ï¿½Ý±ï¿½
     public void OnInventory()
     {
-       
+
         inventory.gameObject.SetActive(true);
-     
+
 
     }
 
     public void OffInvnetory()
     {
-   
+
         inventory.gameObject.SetActive(false);
-   
+
     }
 
     private void Update()
@@ -76,12 +81,12 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void BatteryRemain(float remainTime) //³²¾ÆÀÖ´Â ¹èÅÍ¸® °ÔÀÌÁö UI
+    public void BatteryRemain(float remainTime) //ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UI
     {
         flashSlider.value = remainTime;
     }
 
-    public void BatteryCount(int battery) //ÀÎº¥Åä¸® ¹èÅÍ¸® °¹¼ö ¾÷µ« ¿¹Á¤
+    public void BatteryCount(int battery) //ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         batteryCountUI.text = "" + battery;
     }
@@ -111,5 +116,34 @@ public class UIManager : MonoBehaviour
     public void HpSlider(float hpGaze)
     {
         hpSlider.value = hpGaze;
+    }
+
+
+    public void DamageUI()
+    {
+        damageImage.gameObject.SetActive(true);
+        StartCoroutine(FadeOutImage());
+
+
+    }
+
+    IEnumerator FadeOutImage()
+    {
+        Color startColor = damageImage.color;
+        float t = 0;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            float alpha = Mathf.Lerp(1, 0, t / fadeDuration);
+            damageImage.color = new Color(startColor.r, startColor.g, startColor.b);
+            yield return null;
+
+        }
+
+        damageImage.color = new Color(startColor.r, startColor.g, startColor.b);
+        damageImage.gameObject.SetActive(false);
+
+        
     }
 }

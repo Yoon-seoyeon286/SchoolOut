@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
             Player player = other.GetComponent<Player>();
             player.Damage(30f);
             audioSource.PlayOneShot(attackClip);
+            UIManager.instance.DamageUI();
 
         }
 

@@ -7,6 +7,15 @@ public class Player : MonoBehaviour
 
     bool isDead;
 
+    AudioSource audioSource;
+    public AudioClip heartClip;
+    public AudioClip deadClip;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Start()
     {
         hp = 100;
@@ -23,9 +32,16 @@ public class Player : MonoBehaviour
             UIManager.instance.HpSlider(hp);
         }
 
+        else if (hp <= 40)
+        {
+            audioSource.clip = heartClip;
+            audioSource.Play();
+        }
+
         else if (hp <= 0)
         {
             isDead = true;
+            audioSource.PlayOneShot(deadClip);
             hp = 0f;
         }
         
