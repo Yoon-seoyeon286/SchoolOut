@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf31dd36bbbe7c4fba336f1cf972370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getBattery: {fileID: 8300000, guid: 587d20c592707df48b3cc2a8a3c04cd2, type: 3}
+  getBattery: {fileID: 8300000, guid: 88fea596f0522df4b92e1debc318acea, type: 3}
 --- !u!82 &1507966204549606572
 AudioSource:
   m_ObjectHideFlags: 0

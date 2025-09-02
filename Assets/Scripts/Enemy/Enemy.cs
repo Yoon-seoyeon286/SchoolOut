@@ -30,7 +30,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-
+        audioSource.clip = defaultClip;
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -39,8 +40,11 @@ public class Enemy : MonoBehaviour
         if (!isDead)
         {
             agent.SetDestination(target.position);
-            audioSource.clip = defaultClip;
-            audioSource.Play();
+       
+        }
+        else
+        {
+            agent.isStopped = true;
         }
 
     }
@@ -56,26 +60,30 @@ public class Enemy : MonoBehaviour
             UIManager.instance.DamageUI();
 
         }
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
         if (other.CompareTag("Light"))
         {
-            isExposedToSpotlight = true;
-            exposureTime = 0f;
-            LightAttack();
-
+            exposureTime += Time.deltaTime;
+            if (exposureTime >= timeToDisappera)
+            {
+                isDead = true;
+                StartCoroutine(DeadEnemy());
+            }
         }
     }
 
-    void LightAttack()
+    private void OnTriggerExit(Collider other)
     {
-        timeToDisappera -= Time.deltaTime;
-        if (timeToDisappera == exposureTime)
+        if (other.CompareTag("Light"))
         {
-            isDead = true;
-
-            StartCoroutine(DeadEnemy());
+            exposureTime = 0f;
         }
     }
+
+
 
     IEnumerator DeadEnemy()
     {

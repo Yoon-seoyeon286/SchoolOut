@@ -6,10 +6,12 @@ public class Key : MonoBehaviour
     public Canvas keyCanvas;
     public AudioClip keyClip;
     AudioSource audioSource;
+    EnemySpawn enemySpawn;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        enemySpawn = FindAnyObjectByType<EnemySpawn>();
     }
 
    public void ActiveUI()
@@ -24,6 +26,7 @@ public class Key : MonoBehaviour
 
     public void GetKey()
     {
+        enemySpawn.SpawnGhostCondition();
         inventory.AddKey(gameObject);
         audioSource.PlayOneShot(keyClip);
         //gameObject.SetActive(false);

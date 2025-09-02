@@ -995,7 +995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   keyCanvas: {fileID: 860669340726279971}
-  keyClip: {fileID: 0}
+  keyClip: {fileID: 8300000, guid: 0bf9c800a448b9e4a914ca954e13d5d9, type: 3}
 --- !u!1 &6638972449849393224
 GameObject:
   m_ObjectHideFlags: 0
