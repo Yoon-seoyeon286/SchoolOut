@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Security;
 using System.Xml;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,10 +13,12 @@ public class Enemy : MonoBehaviour
     AudioSource audioSource;
     public AudioClip defaultClip;
     public AudioClip attackClip;
+    public AudioClip deadClip;
 
     public float timeToDisappera = 2.0f;
     float exposureTime = 0f;
     bool isExposedToSpotlight = false;
+    bool isDead = false;
 
 
 
@@ -26,14 +30,18 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
-
+        if (!isDead)
+        {
+            agent.SetDestination(target.position);
+            audioSource.clip = defaultClip;
+            audioSource.Play();
+        }
 
     }
 
@@ -44,13 +52,35 @@ public class Enemy : MonoBehaviour
         {
             Player player = other.GetComponent<Player>();
             player.Damage(30f);
+            audioSource.PlayOneShot(attackClip);
+
         }
 
         if (other.CompareTag("Light"))
         {
             isExposedToSpotlight = true;
             exposureTime = 0f;
+            LightAttack();
 
         }
+    }
+
+    void LightAttack()
+    {
+        timeToDisappera -= Time.deltaTime;
+        if (timeToDisappera == exposureTime)
+        {
+            isDead = true;
+
+            StartCoroutine(DeadEnemy());
+        }
+    }
+
+    IEnumerator DeadEnemy()
+    {
+        audioSource.PlayOneShot(deadClip);
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+        
     }
 }

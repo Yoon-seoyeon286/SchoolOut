@@ -15,16 +15,18 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        if (hp> 0)
+        if (isDead) return;
+
+        if (hp > 0)
         {
             hp -= Time.deltaTime;
             UIManager.instance.HpSlider(hp);
         }
 
-        else if( hp <= 0)
+        else if (hp <= 0)
         {
+            isDead = true;
             hp = 0f;
-
         }
         
     }
