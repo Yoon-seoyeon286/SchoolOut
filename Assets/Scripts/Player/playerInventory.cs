@@ -14,11 +14,18 @@ public class playerInventory : MonoBehaviour
 
 {
 
-    List<GameObject> items = new List<GameObject>();
+    List<GameObject> batteries = new List<GameObject>();
+    List<GameObject> pills = new List<GameObject>();
+    List<GameObject> keys = new List<GameObject>();
+    List<GameObject> flashes = new List<GameObject>();
+
 
     int batteryCount;
 
     int pillCount;
+
+    int flashCount;
+    int keyCount;
 
 
 
@@ -28,9 +35,7 @@ public class playerInventory : MonoBehaviour
 
 
 
-    GameObject flashOriginal;
 
-    GameObject keyOriginal;
 
 
 
@@ -49,14 +54,14 @@ public class playerInventory : MonoBehaviour
         batteryCount = 0;
 
         pillCount = 0;
+        flashCount = 0;
+        keyCount = 0;
 
         flash = FindAnyObjectByType<Flash>();
 
         player = FindAnyObjectByType<Player>();
 
-        isKey = false;
 
-        isFlash = false;
 
     }
 
@@ -76,7 +81,7 @@ public class playerInventory : MonoBehaviour
 
     {
 
-        items.Add(battery);
+        batteries.Add(battery);
 
         batteryCount++;
 
@@ -98,9 +103,9 @@ public class playerInventory : MonoBehaviour
 
         {
 
-            GameObject batteryToUse = items[items.Count - 1];
+            GameObject batteryToUse = batteries[batteries.Count - 1];
 
-            items.Remove(batteryToUse);
+            batteries.Remove(batteryToUse);
 
             batteryCount--;
 
@@ -138,7 +143,7 @@ public class playerInventory : MonoBehaviour
 
     {
 
-        items.Add(pill);
+        pills.Add(pill);
 
         pillCount++;
 
@@ -156,9 +161,9 @@ public class playerInventory : MonoBehaviour
 
         {
 
-            GameObject pillToUse = items[items.Count - 1];
+            GameObject pillToUse = pills[pills.Count - 1];
 
-            items.Remove(pillToUse);
+            pills.Remove(pillToUse);
 
             pillCount--;
 
@@ -198,21 +203,16 @@ public class playerInventory : MonoBehaviour
 
     {
 
-        if (!isKey)
 
-        {
+        key.SetActive(false);
+        keyCount++;
 
-            keyOriginal = key;
+        keys.Add(key);
 
-            keyOriginal.SetActive(false);
+        UIManager.instance.OnKey();
 
-            items.Add(keyOriginal);
 
-            UIManager.instance.OnKey();
 
-            isKey = true;
-
-        }
 
     }
 
@@ -221,12 +221,15 @@ public class playerInventory : MonoBehaviour
     public void UseKey()
 
     {
-
-        if (isKey)
+        if (keyCount > 0)
 
         {
 
-            GameObject keyToUse = items.Find(item => item.GetComponent<Key>() != null);
+            GameObject keyToUse = keys[keys.Count - 1];
+
+            keys.Remove(keyToUse);
+
+            keyCount--;
 
 
 
@@ -234,49 +237,45 @@ public class playerInventory : MonoBehaviour
 
             {
 
-                items.Remove(keyToUse);
-
-                UIManager.instance.OffKey();
-
-                keyOriginal.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
-
-                keyOriginal.SetActive(true);
-
-
-
-                isKey = false;
+                keyToUse.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+                keyToUse.SetActive(true);
 
             }
 
-        }
 
+            if (UIManager.instance != null)
+
+            {
+
+                UIManager.instance.OffKey();
+
+            }
+
+
+
+        }
     }
+
+
+
+
 
 
 
     public void AddFlash(GameObject flash)
 
     {
+        flash.SetActive(false);
 
-        if (!isFlash)
+        flashes.Add(flash);
+        flashCount++;
 
-        {
-
-            flashOriginal = flash;
-
-            flashOriginal.SetActive(false);
+        UIManager.instance.OnFlash();
 
 
-
-            items.Add(flashOriginal);
-
-            UIManager.instance.OnFlash();
-
-            isFlash = true;
-
-        }
 
     }
+
 
 
 
@@ -284,44 +283,40 @@ public class playerInventory : MonoBehaviour
 
     {
 
-        if (isFlash)
+        if (flashCount > 0)
 
         {
 
-            GameObject flashToUse = items.Find(item => item.GetComponent<Flash>() != null);
+            GameObject flashToUse = flashes[flashes.Count - 1];
+
+            flashes.Remove(flashToUse);
+
+            flashCount--;
+
+
+
+            if (flashToUse != null)
 
             {
 
-                if (flashToUse != null)
-                {
-
-                    items.Remove(flashToUse);
-
-                    UIManager.instance.OffFlash();
-
-
-
-                    flashOriginal.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
-
-                    flashOriginal.SetActive(true);
-
-
-
-
-
-                    isFlash = false;
-
-                }
+                flashToUse.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+                flashToUse.SetActive(true);
 
             }
 
+
+            if (UIManager.instance != null)
+
+            {
+
+                UIManager.instance.OffFlash();
+
+            }
+
+
+
         }
-
-
-
-
-
-
     }
-
 }
+    
+
